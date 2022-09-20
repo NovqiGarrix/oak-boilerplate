@@ -3,14 +3,6 @@
 import { Context, red } from '@deps';
 import logger from '@utils/logger.ts';
 
-
-/**
- * Actually this middleware is a request logger, and a error handler
- * 
- * @param param0 
- * @param next 
- * @returns 
- */
 export default async function requestLogger({ request, response }: Context<Record<string, any>, Record<string, any>>, next: () => Promise<unknown>) {
     const startTime = Date.now();
 
@@ -25,15 +17,14 @@ export default async function requestLogger({ request, response }: Context<Recor
         const endTime = Date.now();
         const time = endTime - startTime;
 
-        logger.success(`[TOOK]: ${time}ms [METHOD]: "${request.method}" [CODE]: "${response.status}" [ENDPOINT]: "${request.originalRequest.url}"`)
+        logger.success(`[TOOK]: ${time}ms [METHOD]: "${request.method}" [CODE]: "${response.status}" [ENDPOINT]: "${request.originalRequest.url.slice(0, 200)}..."`)
     } catch (error) {
-
-        // Error Handler
-        response.status = error.status;
+        logger.error(error.message);
+        response.status = error.status ?? 500;
 
         const endTime = Date.now();
         const time = endTime - startTime;
-        logger.info(red(`[TOOK]: ${time}ms [METHOD]: "${request.method}" [STATUS]: "${error.status}" [ENDPOINT]: "${request.originalRequest.url}"`));
+        logger.info(red(`[TOOK]: ${time}ms [METHOD]: "${request.method}" [STATUS]: "${error.status}" [ENDPOINT]: "${request.originalRequest.url.slice(0, 200)}..."`));
 
         if (error.status === 500) {
             logger.error(error.message);

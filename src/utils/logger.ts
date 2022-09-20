@@ -1,4 +1,4 @@
-import { Format, Houston, ConsoleTransport, LogLevel, TextPrefix, Color, dayjs, FileTransport } from '@deps';
+import { Format, Houston, ConsoleTransport, LogLevel, TextPrefix, Color, dayjs } from '@deps';
 
 const logger = new Houston([
     new ConsoleTransport([LogLevel["Error"], LogLevel["Success"], LogLevel["Warning"], LogLevel["Info"]], {
@@ -13,6 +13,7 @@ const logger = new Houston([
     }),
 
     // Deno Deploy does not allow you to write files.
+
     // new FileTransport("./logs", [LogLevel["Error"]], {
     //     format: Format["text"],
     //     prefix: new TextPrefix(dayjs().format("MMMM D, YYYY h:mm:ss A")),

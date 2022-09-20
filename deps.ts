@@ -23,7 +23,7 @@ export { ConsoleTransport, Format, Houston, LogLevel, LogLevelDisplay, FileTrans
 // export { decode as decodeBase64, encode as encodeBase64 } from 'https://deno.land/std@0.82.0/encoding/base64.ts';
 
 // Zod
-// export { z } from 'https://deno.land/x/zod@v3.18.0/mod.ts';
+export { z } from 'https://deno.land/x/zod@v3.18.0/mod.ts';
 
 // CORS
 export { oakCors } from 'https://deno.land/x/cors@v1.2.2/mod.ts';

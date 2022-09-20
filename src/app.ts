@@ -10,7 +10,7 @@ export default function createServer(): Application<Record<string, any>> {
     const CLIENT_URL = Deno.env.get("CLIENT_URL") || env.CLIENT_URL;
     const DASHBOARD_URL = Deno.env.get("DASHBOARD_URL") || env.DASHBOARD_URL;
 
-    const DENO_ENV = Deno.env.get("DENO_ENV") || env.DENO_ENV;
+    const DENO_ENV = Deno.env.get("DENO_ENV") || env.DENO_ENV || "dev";
     const IS_PROD = DENO_ENV === "prod";
 
     const app = new Application({ state: { IS_PROD } });
