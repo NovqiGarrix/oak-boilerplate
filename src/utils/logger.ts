@@ -2,7 +2,7 @@ import { Format, Houston, ConsoleTransport, LogLevel, TextPrefix, Color, dayjs }
 
 const logger = new Houston([
     new ConsoleTransport([LogLevel["Error"], LogLevel["Success"], LogLevel["Warning"], LogLevel["Info"]], {
-        format: Format["json"],
+        format: Format["text"],
         prefix: new TextPrefix(dayjs().format("MMMM D, YYYY h:mm:ss A")),
         logColors: {
             [LogLevel.Info]: Color.Black,
