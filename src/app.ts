@@ -1,4 +1,3 @@
-// deno-lint-ignore-file no-explicit-any
 import { Application, Router, configAsync, oakCors } from '@deps';
 
 import V1Router from '@routers/v1/index.ts';
@@ -6,7 +5,7 @@ import requestLogger from '@middlewares/requestLogger.ts';
 
 const env = await configAsync();
 
-export default function createServer(): Application<Record<string, any>> {
+export default function createServer() {
     const CLIENT_URL = Deno.env.get("CLIENT_URL") || env.CLIENT_URL;
     const DASHBOARD_URL = Deno.env.get("DASHBOARD_URL") || env.DASHBOARD_URL;
 
